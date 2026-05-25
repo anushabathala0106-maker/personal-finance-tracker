@@ -1,0 +1,20 @@
+{
+  "name": "finance-trecker-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "build-client": "cd client && npm install && npm run build",
+    "start": "npm run build-client && electron .",
+    "dev": "npm run install-client && npm run install-server && concurrently --kill-others-on-fail \"npm --prefix server run dev\" \"npm --prefix client run dev\" \"wait-on http://localhost:5173 && electron .\""
+  },
+  "dependencies": {
+    "electron": "^26.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "wait-on": "^9.0.10"
+  }
+}
